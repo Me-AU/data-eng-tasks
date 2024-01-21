@@ -235,3 +235,5 @@ Table OrderDetails {
   quantity INTEGER
 }
 ```
+
+![Alt text](ERD.png)
