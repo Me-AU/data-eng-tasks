@@ -141,3 +141,99 @@ ORDER BY
 ```
 
 ![Total Product Revenues](total-product-revenues.png)
+
+## Sub-Task 2: Database Design
+
+The schema is in ***3NF*** (Third Normal Form) as:
+- Each table has atomic (indivisible) values in each column, with no repeating groups.
+- There are no partial dependencies in any table.
+- There are no transitive dependencies between non-prime attributes.
+
+Further normalization is not required in general cases.
+
+### Tables
+
+1. **Customers Table:**
+
+> | customer_id | customer_name        |
+> |-------------|----------------------|
+> | VARCHAR [PK]| VARCHAR              |
+
+2. **Orders Table:**
+
+> | order_id | customer_id | order_date | shipment_date |
+> |----------|-------------|------------|---------------|
+> | VARCHAR [PK] | VARCHAR [FK] | DATE     | DATE          |
+
+3. **Products Table:**
+
+> | product_id | product_description | unit_price |
+> |------------|----------------------|------------|
+> | VARCHAR [PK] | VARCHAR             | MONEY |
+
+4. **OrderDetails Table:**
+
+> | order_id | product_id | quantity |
+> |----------|------------|----------|
+> | VARCHAR [PK, FK] | VARCHAR [PK, FK] | INTEGER  |
+
+### Relationships
+
+1. Customers Table
+- **Primary Key:** `customer_id`
+- **Relationships:**
+  - One customer can place many orders (One-to-Many with `Orders(customer_id)`).
+
+2.  Products Table
+- **Primary Key:** `product_id`
+- **Relationships:**
+  - One product can be included in multiple order details (One-to-Many with `OrderDetails(product_id)`).
+
+3.  Orders Table
+- **Primary Key:** `order_id`
+- **Foreign Keys:**
+  - `customer_id` references `Customers(customer_id)`
+- **Relationships:**
+  - One order can have multiple order details (One-to-Many with `OrderDetails(order_id)`).
+  - Many orders can belongs to one customer (Many-to-One with `Customers(customer_id)`).
+
+4.  OrderDetails Table
+- **Primary Key:** `(order_id, product_id)`
+- **Foreign Keys:**
+  - `order_id` references `Orders(order_id)`
+  - `product_id` references `Products(product_id)`
+- **Relationships:**
+  - Many order details can belongs to one order (Many-to-One with `Orders(order_id)`).
+  - Many order details can relate to one product (Many-to-One with `Products(product_id)`).
+
+### Schema ERD (Entity-Relationship Diagram)
+
+We use DBML (Database Markdown Language) to quickly generate our ERD using [dbdiagram.io]("https://dbdiagram.io").
+
+```sql
+Table Customers {
+  customer_id VARCHAR [pk]
+  customer_name VARCHAR
+}
+
+Table Orders {
+  order_id VARCHAR [pk]
+  customer_id VARCHAR [ref: > Customers.customer_id]
+  order_date DATE
+  shipment_date DATE
+}
+
+Table Products {
+  product_id VARCHAR [pk]
+  product_description VARCHAR
+  unit_price MONEY
+}
+
+Table OrderDetails {
+  order_id VARCHAR [pk, ref: > Orders.order_id]
+  product_id VARCHAR [pk, ref: > Products.product_id]
+  quantity INTEGER
+}
+```
+
+![Alt text](ERD.png)
