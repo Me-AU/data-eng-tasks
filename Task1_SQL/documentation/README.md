@@ -177,3 +177,31 @@ Further normalization is not required in general cases.
 > |----------|------------|----------|
 > | VARCHAR [PK, FK] | VARCHAR [PK, FK] | INTEGER  |
 
+### Relationships
+
+1. Customers Table
+- **Primary Key:** `customer_id`
+- **Relationships:**
+  - One customer can place many orders (One-to-Many with `Orders(customer_id)`).
+
+2.  Products Table
+- **Primary Key:** `product_id`
+- **Relationships:**
+  - One product can be included in multiple order details (One-to-Many with `OrderDetails(product_id)`).
+
+3.  Orders Table
+- **Primary Key:** `order_id`
+- **Foreign Keys:**
+  - `customer_id` references `Customers(customer_id)`
+- **Relationships:**
+  - One order can have multiple order details (One-to-Many with `OrderDetails(order_id)`).
+  - Many orders can belongs to one customer (Many-to-One with `Customers(customer_id)`).
+
+4.  OrderDetails Table
+- **Primary Key:** `(order_id, product_id)`
+- **Foreign Keys:**
+  - `order_id` references `Orders(order_id)`
+  - `product_id` references `Products(product_id)`
+- **Relationships:**
+  - Many order details can belongs to one order (Many-to-One with `Orders(order_id)`).
+  - Many order details can relate to one product (Many-to-One with `Products(product_id)`).
