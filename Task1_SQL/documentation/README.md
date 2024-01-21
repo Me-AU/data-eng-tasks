@@ -47,7 +47,7 @@ CREATE TABLE customer_orders ( -- creating table according to the CSV columns
 ```sql
 SET datestyle TO iso, dmy; -- default postgreSQL datestyle is ymd, adjusting it according to the CSV file
 
-COPY customer_orders ( -- copying CSV file contents; MUST change the path according to your PC when testing
+COPY customer_orders ( -- copying CSV file contents; **MUST** change the path according to your PC when testing
     customer_id,
     customer_name,
     order_id,
@@ -62,3 +62,24 @@ FROM 'C:/Users/ahsan/Downloads/data-eng-tasks/Task1_SQL/data/customer_dataset.cs
 DELIMITER ',' -- specifying delimiter used in CSV file
 CSV HEADER; -- ensuring the first column is skipped as it is the header
 ```
+
+## Sub-Task 1: Query Optimization
+
+- In the Query Tool, run the following query:
+
+```sql
+-- Select top 5 customers with highest total purchases
+SELECT
+    customer_id,
+    SUM(quantity * unit_price) AS total_purchases -- total purchases calculated
+FROM
+    customer_orders
+GROUP BY
+    customer_id
+ORDER BY
+    total_purchases DESC -- sorted in descending order
+LIMIT 5; -- showing only top 5 customers
+```
+
+![Top 5 Customers](top-5-customers.png)
+
