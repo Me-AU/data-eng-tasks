@@ -67,10 +67,10 @@ CSV HEADER; -- ensuring the first column is skipped as it is the header
 
 ### Create the Query
 
-- In the Query Tool, run the following query:
+- In the Query Tool, run the following query to get top 5 paying customers in descending order:
 
 ```sql
--- Select top 5 customers with highest total purchases
+-- Select top 5 customers with highest total purchases in descending order
 SELECT
     customer_id,
     SUM(quantity * unit_price) AS total_purchases -- total purchases calculated
@@ -122,3 +122,22 @@ As optimization is required in the case of a larger dataset, we should consider 
 CREATE INDEX idx_customer_id ON customer_orders(customer_id);
 ```
 
+## Sub-Task 2: Data Transformation
+
+- In the Query Tool, run the following query to get total revenue of each product in descending order:
+
+```sql
+-- Calculate the total revenue for each product in descending order
+SELECT
+    product_id,
+    product_description,
+    SUM(quantity * unit_price) AS total_revenue -- total revenue calculated
+FROM
+    customer_orders
+GROUP BY
+    product_id, product_description
+ORDER BY
+    total_revenue DESC; -- sorted in descending order by total revenue
+```
+
+![Total Product Revenues](total-product-revenues.png)
