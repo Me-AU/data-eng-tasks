@@ -237,3 +237,26 @@ Table OrderDetails {
 ```
 
 ![Alt text](ERD.png)
+
+## Sub-Task 4: Indexing
+
+### Importance of Indexing in a Database
+
+Indexing is crucial for optimizing database performance by facilitating faster data retrieval, efficient search operations, improved sorting and grouping, enhanced join performance, and boosted aggregation function performance.
+
+**Note:** The cost of these benefits is an added overhead in every WRITE query.
+
+### Columns in the customer_orders Table That Should Be Indexed
+
+1. **customer_id:**
+   - Reason: Optimize searches for specific customers.
+   - Query: `CREATE INDEX idx_customer_id ON customer_orders (customer_id);` (as used in Sub Task 1)
+
+2. **product_id:**
+   - Reason: Improve performance of queries involving product_id.
+   - Query: `CREATE INDEX idx_product_id ON customer_orders (product_id);`
+
+3. **order_date and shipment_date:**
+   - Reason: Enhance efficiency of date-based filtering.
+   - Query: `CREATE INDEX idx_order_date ON customer_orders (order_date);`  
+            `CREATE INDEX idx_shipment_date ON customer_orders (shipment_date);`
