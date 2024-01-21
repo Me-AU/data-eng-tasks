@@ -141,3 +141,39 @@ ORDER BY
 ```
 
 ![Total Product Revenues](total-product-revenues.png)
+
+## Sub-Task 2: Database Design
+
+The schema is in ***3NF*** (Third Normal Form) as:
+- Each table has atomic (indivisible) values in each column, with no repeating groups.
+- There are no partial dependencies in any table.
+- There are no transitive dependencies between non-prime attributes.
+
+Further normalization is not required in general cases.
+
+### Tables
+
+1. **Customers Table:**
+
+> | customer_id | customer_name        |
+> |-------------|----------------------|
+> | VARCHAR [PK]| VARCHAR              |
+
+2. **Orders Table:**
+
+> | order_id | customer_id | order_date | shipment_date |
+> |----------|-------------|------------|---------------|
+> | VARCHAR [PK] | VARCHAR [FK] | DATE     | DATE          |
+
+3. **Products Table:**
+
+> | product_id | product_description | unit_price |
+> |------------|----------------------|------------|
+> | VARCHAR [PK] | VARCHAR             | MONEY |
+
+4. **OrderDetails Table:**
+
+> | order_id | product_id | quantity |
+> |----------|------------|----------|
+> | VARCHAR [PK, FK] | VARCHAR [PK, FK] | INTEGER  |
+
