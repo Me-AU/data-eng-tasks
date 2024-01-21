@@ -65,6 +65,8 @@ CSV HEADER; -- ensuring the first column is skipped as it is the header
 
 ## Sub-Task 1: Query Optimization
 
+### Create the Query
+
 - In the Query Tool, run the following query:
 
 ```sql
@@ -82,4 +84,41 @@ LIMIT 5; -- showing only top 5 customers
 ```
 
 ![Top 5 Customers](top-5-customers.png)
+
+### Optimize the Query 
+
+- To further optimize this query, we check its Query Plan by using the following query:
+
+```sql
+EXPLAIN
+SELECT
+    customer_id,
+    SUM(quantity * unit_price) AS total_purchases
+FROM
+    customer_orders
+GROUP BY
+    customer_id
+ORDER BY
+    total_purchases DESC
+LIMIT 5;
+```
+
+![Query Plan](query-plan.png)
+
+Since our dataset is small, the costs occurring are nominal. 
+
+Considering the possibility of this dataset (customer orders) growinng over time, we have two options: 
+- Using Materialized Views (MVs):
+    - The nature of our dataset is that it would be changing continuously as new orders come, making MVs expensive to refresh.
+    - The MV is specific to this query, and does not help in any other queries.
+- Indexing:
+    - Indexing requires an overhead with each write operation, which is better compared to MVs' expense.
+    - The indexing would increase efficiency in other queries as well, that use the indexed columns.
+
+As optimization is required in the case of a larger dataset, we should consider the proportional increase in costs for the Seq Scan required for the GROUP BY clause. Thus, we index the customer_id by query:
+
+```sql
+-- Creating an index on the customer_id column to optimize grouping
+CREATE INDEX idx_customer_id ON customer_orders(customer_id);
+```
 
