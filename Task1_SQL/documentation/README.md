@@ -142,7 +142,7 @@ ORDER BY
 
 ![Total Product Revenues](total-product-revenues.png)
 
-## Sub-Task 2: Database Design
+## Sub-Task 3: Database Design
 
 The schema is in ***3NF*** (Third Normal Form) as:
 - Each table has atomic (indivisible) values in each column, with no repeating groups.
