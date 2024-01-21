@@ -237,3 +237,12 @@ Table OrderDetails {
 ```
 
 ![Alt text](ERD.png)
+
+## Sub-Task 4: Indexing
+
+### Importance of Indexing in a Database
+
+Indexing is crucial for optimizing database performance by facilitating faster data retrieval, efficient search operations, improved sorting and grouping, enhanced join performance, and boosted aggregation function performance.
+
+**Note:** The cost of these benefits is an added overhead in every WRITE query.
+
