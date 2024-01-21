@@ -205,3 +205,33 @@ Further normalization is not required in general cases.
 - **Relationships:**
   - Many order details can belongs to one order (Many-to-One with `Orders(order_id)`).
   - Many order details can relate to one product (Many-to-One with `Products(product_id)`).
+
+### Schema ERD (Entity-Relationship Diagram)
+
+We use DBML (Database Markdown Language) to quickly generate our ERD using [dbdiagram.io]("https://dbdiagram.io").
+
+```sql
+Table Customers {
+  customer_id VARCHAR [pk]
+  customer_name VARCHAR
+}
+
+Table Orders {
+  order_id VARCHAR [pk]
+  customer_id VARCHAR [ref: > Customers.customer_id]
+  order_date DATE
+  shipment_date DATE
+}
+
+Table Products {
+  product_id VARCHAR [pk]
+  product_description VARCHAR
+  unit_price MONEY
+}
+
+Table OrderDetails {
+  order_id VARCHAR [pk, ref: > Orders.order_id]
+  product_id VARCHAR [pk, ref: > Products.product_id]
+  quantity INTEGER
+}
+```
