@@ -26,7 +26,9 @@ Task1_SQL/
 ## Import Customer Dataset to PostgreSQL
 
 - Open pgAdmin, connect to your PostgreSQL server, and create a database ```customers```.
-- Go to the Query Tool of this db and create a table according to the CSV's schema by the SQL query:
+- Go to the Query Tool of this db:
+![Query Tool](query-tool.png)
+and create a table according to the CSV's schema by the SQL query:
 
 ```sql
 CREATE TABLE customer_orders ( -- creating table according to the CSV columns
@@ -236,7 +238,7 @@ Table OrderDetails {
 }
 ```
 
-![Alt text](ERD.png)
+![Schema ERD](ERD.png)
 
 ## Sub-Task 4: Indexing
 
