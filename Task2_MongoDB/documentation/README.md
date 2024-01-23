@@ -203,3 +203,9 @@ The features and target variable for any model depends on the KPI (key performan
   - Frequency of ordering specific products.
   - Average quantity and unit price for each product.
 
+### Data Set Considerations:
+After analyzing the dataset, I see that:
+- Each record represents a historical order with corresponding customer, order, and product information.
+- Therefore, each row becomes a data point for training the model.
+- The data is completely consistent and does not have any missing values.
+- We can split the dataset into training and testing sets as there is ample data.
