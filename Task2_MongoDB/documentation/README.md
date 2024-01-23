@@ -209,3 +209,19 @@ After analyzing the dataset, I see that:
 - Therefore, each row becomes a data point for training the model.
 - The data is completely consistent and does not have any missing values.
 - We can split the dataset into training and testing sets as there is ample data.
+
+## Sub-Task 3: Data Updation
+
+Updating `shipment_date` for a specified order id is straight forward. Find the document then update the `shipment_date` attribute. Sample query is given below, which you can run in mongosh when using `customers` database
+
+```js
+db.order_data.updateOne(
+   { order_id: 1065 },  // sample order_id
+   {
+      $set: {
+         shipment_date: ISODate("2014-01-31")  // sample shipment_date
+      }
+   }
+)
+```
+
