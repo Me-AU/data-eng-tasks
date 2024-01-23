@@ -11,6 +11,8 @@ Follow these steps to set up and test the MongoDB tasks:
 
 ## Basic Setup
 
+***Note:** Do <u>NOT</u> use mongosh (MongoDB Shell) in VSC directly, it has bugs if used without the relevant VSC extension.*
+
 1. Clone the repository (if not done yet), and switch to the Task2_MongoDB folder:
    ```bash
    git clone "https://github.com/Me-AU/data-eng-tasks"
