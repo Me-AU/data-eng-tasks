@@ -11,7 +11,7 @@ The SQL sub-tasks required both technical SQL skills and theoretical relational 
 - Database Design
 - Indexing
 
-Read the full [documentation](Task1_SQL\documentation\README.md) of every step taken and decision made, or follow this guide to [test it yourself](Task1_SQL\documentation\SETUP.md).
+Read the full [documentation](https://github.com/Me-AU/data-eng-tasks/blob/main/Task1_SQL/documentation/README.md) of every step taken and decision made, or follow this guide to [test it yourself](https://github.com/Me-AU/data-eng-tasks/blob/main/Task1_SQL/documentation/SETUP.md).
 
 ## 2. MongoDB
 
@@ -22,4 +22,4 @@ The MongoDB sub-tasks involve working with MongoDB, proposing a schema, and outl
 - Query to Update Existing Data
 - Query to Add New Data
 
-Read the complete [documentation](Task2_MongoDB/documentation/README.md) for detailed steps and decisions made, or follow this guide to [test it yourself](Task2_MongoDB/documentation/SETUP.md).
+Read the complete [documentation](https://github.com/Me-AU/data-eng-tasks/blob/main/Task2_MongoDB/documentation/README.md) for detailed steps and decisions made, or follow this guide to [test it yourself](https://github.com/Me-AU/data-eng-tasks/blob/main/Task2_MongoDB/documentation/SETUP.md).
