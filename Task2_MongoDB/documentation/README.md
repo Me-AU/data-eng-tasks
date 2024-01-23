@@ -40,7 +40,7 @@ Task2_MongoDB/
 
 4. Import the `customer_dataset.csv` file using the following windows shell command:
    ```shell
-    mongoimport --db customer --collection order_data --type csv --headerline --file 'C:/Users/ahsan/Downloads/data-eng-tasks/Task2_MongoDB/data/customer_dataset.csv'
+   mongoimport --db customer --collection order_data --type csv --headerline --file 'C:/Users/ahsan/Downloads/data-eng-tasks/Task2_MongoDB/data/customer_dataset.csv'
    ```
 
    ![mongoimport](mongoimport.png)
@@ -58,16 +58,16 @@ Task2_MongoDB/
 
 ```json
 {
-  "_id": ObjectId, 
-  "customer_id": String,
-  "customer_name": String,
-  "order_id": Number,
-  "order_date": ISODate,
-  "shipment_date": ISODate,
-  "product_id": String,
-  "product_description": String,
-  "quantity": Number,
-  "unit_price": Number
+   "_id": ObjectId, 
+   "customer_id": String,
+   "customer_name": String,
+   "order_id": Number,
+   "order_date": ISODate,
+   "shipment_date": ISODate,
+   "product_id": String,
+   "product_description": String,
+   "quantity": Number,
+   "unit_price": Number
 }
 ```
 
@@ -109,50 +109,50 @@ Schema validation can be enforced to keep some checks in our `order_data` collec
 
 ```js
 db.createCollection("order_data", {
-  validator: {
-    $jsonSchema: {
-      bsonType: "object",
-      required: ["customer_id", "customer_name", "order_id", "order_date", "shipment_date", "product_id", "product_description", "quantity", "unit_price"],
-      properties: {
-        customer_id: {
-          bsonType: "string",
-          description: "Unique identifier for the customer - Required."
-        },
-        customer_name: {
-          bsonType: "string",
-          description: "Name of the customer - Required."
-        },
-        order_id: {
-          bsonType: "int",
-          description: "Unique identifier for the order - Required."
-        },
-        order_date: {
-          bsonType: "date",
-          description: "Date of the order - Required."
-        },
-        shipment_date: {
-          bsonType: "date",
-          description: "Date of shipment - Required."
-        },
-        product_id: {
-          bsonType: "string",
-          description: "Unique identifier for the product - Required."
-        },
-        product_description: {
-          bsonType: "string",
-          description: "Description of the product - Required."
-        },
-        quantity: {
-          bsonType: "int",
-          description: "Quantity of product ordered - Required."
-        },
-        unit_price: {
-          bsonType: "number",
-          description: "Unit price for a single quantity of product - Required."
-        }
+   validator: {
+      $jsonSchema: {
+         bsonType: "object",
+         required: ["customer_id", "customer_name", "order_id", "order_date", "shipment_date", "product_id",  "product_description", "quantity", "unit_price"],
+         properties: {
+            customer_id: {
+               bsonType: "string",
+               description: "Unique identifier for the customer - Required."
+            },
+            customer_name: {
+               bsonType: "string",
+               description: "Name of the customer - Required."
+            },
+            order_id: {
+               bsonType: "int",
+               description: "Unique identifier for the order - Required."
+            },
+            order_date: {
+               bsonType: "date",
+               description: "Date of the order - Required."
+            },
+            shipment_date: {
+               bsonType: "date",
+               description: "Date of shipment - Required."
+            },
+            product_id: {
+               bsonType: "string",
+               description: "Unique identifier for the product - Required."
+            },
+            product_description: {
+               bsonType: "string",
+               description: "Description of the product - Required."
+            },
+            quantity: {
+               bsonType: "int",
+               description: "Quantity of product ordered - Required."
+            },
+            unit_price: {
+               bsonType: "number",
+               description: "Unit price for a single quantity of product - Required."
+            }
+         }
       }
-    }
-  }
+   }
 })
 ```
 
