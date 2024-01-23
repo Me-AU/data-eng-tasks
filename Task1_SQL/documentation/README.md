@@ -27,7 +27,9 @@ Task1_SQL/
 
 - Open pgAdmin, connect to your PostgreSQL server, and create a database ```customers```.
 - Go to the Query Tool of this db:
+  
 ![Query Tool](query-tool.png)
+
 and create a table according to the CSV's schema by the SQL query:
 
 ```sql
@@ -109,7 +111,7 @@ LIMIT 5;
 
 Since our dataset is small, the costs occurring are nominal. 
 
-Considering the possibility of this dataset (customer orders) growinng over time, we have two options: 
+Considering the possibility of this dataset (customer orders) growing over time, we have two options: 
 - Using Materialized Views (MVs):
     - The nature of our dataset is that it would be changing continuously as new orders come, making MVs expensive to refresh.
     - The MV is specific to this query, and does not help in any other queries.
