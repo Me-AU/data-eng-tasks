@@ -71,3 +71,35 @@ Task2_MongoDB/
 }
 ```
 
+### Explanation
+
+- **_id:** MongoDB automatically adds this field as the primary key. It's an ObjectId and ensures the uniqueness of each document.
+
+- **customer_id:** String type, representing the unique identifier for the customer.
+
+- **customer_name:** String type, storing the name of the customer.
+
+- **order_id:** Number type, representing the unique identifier for each order.
+
+- **order_date:** ISODate type, storing the order date in the ISO date format.
+
+- **shipment_date:** ISODate type, storing the shipment date in the ISO date format.
+
+- **product_id:** String type, representing the unique identifier for the product.
+
+- **product_description:** String type, providing a description of the product.
+
+- **quantity:** Number type, indicating the quantity of the product ordered.
+
+- **unit_price:** Number type, storing the unit price for a single quantity of the product.
+
+### Considerations
+
+- MongoDB uses BSON (Binary JSON) to store documents, and the data types align with BSON types.
+
+- Using ObjectId as the primary key ensures unique identification of each document.
+
+- ISODate is used to store date values in a standard format.
+
+- Numeric fields (order_id, quantity, unit_price) are represented using the Number data type.
+
