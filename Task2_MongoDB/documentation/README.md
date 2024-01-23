@@ -29,12 +29,12 @@ Task2_MongoDB/
 1. Open the `mongosh` shell.
 
 2. Connect to your MongoDB server and use the following command to create `customer` database if it does not exist:
-   ```javascript
+   ```js
    use customer
    ```
 
 3. Create a collection named `order_data`:
-   ```javascript
+   ```js
    db.createCollection('order_data') // creates 'order_data' collection
    ```
 
@@ -52,4 +52,108 @@ Task2_MongoDB/
    db.order_data.countDocuments() // returns 280 i.e the number of imported documents
    ```
 
-   
+## Sub-Task 1: Schema Design
+
+### Schema 
+
+```json
+{
+  "_id": ObjectId, 
+  "customer_id": String,
+  "customer_name": String,
+  "order_id": Number,
+  "order_date": ISODate,
+  "shipment_date": ISODate,
+  "product_id": String,
+  "product_description": String,
+  "quantity": Number,
+  "unit_price": Number
+}
+```
+
+### Explanation
+
+- **_id:** MongoDB automatically adds this field as the primary key. It's an ObjectId and ensures the uniqueness of each document.
+
+- **customer_id:** String type, representing the unique identifier for the customer.
+
+- **customer_name:** String type, storing the name of the customer.
+
+- **order_id:** Number type, representing the unique identifier for each order.
+
+- **order_date:** ISODate type, storing the order date in the ISO date format.
+
+- **shipment_date:** ISODate type, storing the shipment date in the ISO date format.
+
+- **product_id:** String type, representing the unique identifier for the product.
+
+- **product_description:** String type, providing a description of the product.
+
+- **quantity:** Number type, indicating the quantity of the product ordered.
+
+- **unit_price:** Number type, storing the unit price for a single quantity of the product.
+
+### Considerations
+
+- MongoDB uses BSON (Binary JSON) to store documents, and the data types align with BSON types.
+
+- Using ObjectId as the primary key ensures unique identification of each document.
+
+- ISODate is used to store date values in a standard format.
+
+- Numeric fields (order_id, quantity, unit_price) are represented using the Number data type.
+
+### Schema Validation
+
+Schema validation can be enforced to keep some checks in our `order_data` collection's data. While collection creation, we can use this query to enforce validation:
+
+```js
+db.createCollection("order_data", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["customer_id", "customer_name", "order_id", "order_date", "shipment_date", "product_id", "product_description", "quantity", "unit_price"],
+      properties: {
+        customer_id: {
+          bsonType: "string",
+          description: "Unique identifier for the customer - Required."
+        },
+        customer_name: {
+          bsonType: "string",
+          description: "Name of the customer - Required."
+        },
+        order_id: {
+          bsonType: "int",
+          description: "Unique identifier for the order - Required."
+        },
+        order_date: {
+          bsonType: "date",
+          description: "Date of the order - Required."
+        },
+        shipment_date: {
+          bsonType: "date",
+          description: "Date of shipment - Required."
+        },
+        product_id: {
+          bsonType: "string",
+          description: "Unique identifier for the product - Required."
+        },
+        product_description: {
+          bsonType: "string",
+          description: "Description of the product - Required."
+        },
+        quantity: {
+          bsonType: "int",
+          description: "Quantity of product ordered - Required."
+        },
+        unit_price: {
+          bsonType: "number",
+          description: "Unit price for a single quantity of product - Required."
+        }
+      }
+    }
+  }
+})
+```
+
+This validator ensures that the required fields are present and have the correct data types.
