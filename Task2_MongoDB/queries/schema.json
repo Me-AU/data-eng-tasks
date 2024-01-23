@@ -1,0 +1,12 @@
+{
+    "_id": "ObjectId", 
+    "customer_id": "String",
+    "customer_name": "String",
+    "order_id": "Number",
+    "order_date": "ISODate",
+    "shipment_date": "ISODate",
+    "product_id": "String",
+    "product_description": "String",
+    "quantity": "Number",
+    "unit_price": "Number"
+}

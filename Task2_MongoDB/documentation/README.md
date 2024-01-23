@@ -29,12 +29,12 @@ Task2_MongoDB/
 1. Open the `mongosh` shell.
 
 2. Connect to your MongoDB server and use the following command to create `customer` database if it does not exist:
-   ```javascript
+   ```js
    use customer
    ```
 
 3. Create a collection named `order_data`:
-   ```javascript
+   ```js
    db.createCollection('order_data') // creates 'order_data' collection
    ```
 
@@ -52,4 +52,22 @@ Task2_MongoDB/
    db.order_data.countDocuments() // returns 280 i.e the number of imported documents
    ```
 
-   
+## Sub-Task 1: Schema Design
+
+### Schema 
+
+```json
+{
+  "_id": ObjectId, 
+  "customer_id": String,
+  "customer_name": String,
+  "order_id": Number,
+  "order_date": ISODate,
+  "shipment_date": ISODate,
+  "product_id": String,
+  "product_description": String,
+  "quantity": Number,
+  "unit_price": Number
+}
+```
+
