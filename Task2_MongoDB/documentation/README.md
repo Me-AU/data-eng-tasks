@@ -173,3 +173,33 @@ The features and target variable for any model depends on the KPI (key performan
 ### Target Variable:
 `future_order`: This would be a numerical variable representing the number of future orders from each customer in a time frame.
 
+### Features:
+***Basic:***
+1. **Customer Information:**
+   - `customer_id`: Unique identifier for the customer.
+   - `customer_name`: Name of the customer.
+
+2. **Order Information:**
+   - `order_id`: Unique identifier for the order.
+   - `order_date`: Date of the order.
+   - `shipment_date`: Date of shipment.
+
+3. **Product Information:**
+   - `product_id`: Unique identifier for the product.
+   - `product_description`: Description of the product.
+   - `quantity`: Quantity of the product ordered.
+   - `unit_price`: Unit price for a single quantity of the product.
+
+***Derived:***
+- **Time-based Features:**
+  - Day of the week, month, quarter, and year from `order_date` and `shipment_date`.
+  - Time duration between `order_date` and `shipment_date`.
+
+- **Customer-based Features:**
+  - Number of orders placed by the customer in the past.
+  - Average quantity of every product in past orders.
+
+- **Product-based Features:**
+  - Frequency of ordering specific products.
+  - Average quantity and unit price for each product.
+
