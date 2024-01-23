@@ -254,4 +254,15 @@ db.order_data.insertOne({
 });
 ```
 
+![Add Query](add-query.png)
+
+Confirm the result by:
+
+```js
+db.order_data.findOne(
+   { order_id: 2001}
+)
+```
+
+![Addition Confirm](a-confirm.png)
 
