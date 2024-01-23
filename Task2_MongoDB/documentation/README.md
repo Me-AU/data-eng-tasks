@@ -157,3 +157,55 @@ db.createCollection("order_data", {
 ```
 
 This validator ensures that the required fields are present and have the correct data types.
+
+## Sub-Task 2: Model Creation
+
+The features and target variable for any model depends on the KPI (key performance indicators) most significant to our business objective. For example future orders can be predicted to get expected:
+
+- Total revenue
+- Number of orders
+- Sales per product
+- Orders per customer
+- Delivery times
+
+*<u>**Note:**</u> I assume that knowing the expected orders from each customer is more important for us right now. We can use this to <u>plan operational resources</u>, <u>do personalized marketing</u>, and <u>optimize delivery schedules</u>*
+  
+### Target Variable:
+`future_order`: This would be a numerical variable representing the number of future orders from each customer in a time frame.
+
+### Features:
+***Basic:***
+1. **Customer Information:**
+   - `customer_id`: Unique identifier for the customer.
+   - `customer_name`: Name of the customer.
+
+2. **Order Information:**
+   - `order_id`: Unique identifier for the order.
+   - `order_date`: Date of the order.
+   - `shipment_date`: Date of shipment.
+
+3. **Product Information:**
+   - `product_id`: Unique identifier for the product.
+   - `product_description`: Description of the product.
+   - `quantity`: Quantity of the product ordered.
+   - `unit_price`: Unit price for a single quantity of the product.
+
+***Derived:***
+- **Time-based Features:**
+  - Day of the week, month, quarter, and year from `order_date` and `shipment_date`.
+  - Time duration between `order_date` and `shipment_date`.
+
+- **Customer-based Features:**
+  - Number of orders placed by the customer in the past.
+  - Average quantity of every product in past orders.
+
+- **Product-based Features:**
+  - Frequency of ordering specific products.
+  - Average quantity and unit price for each product.
+
+### Data Set Considerations:
+After analyzing the dataset, I see that:
+- Each record represents a historical order with corresponding customer, order, and product information.
+- Therefore, each row becomes a data point for training the model.
+- The data is completely consistent and does not have any missing values.
+- We can split the dataset into training and testing sets as there is ample data.
