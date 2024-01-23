@@ -157,3 +157,19 @@ db.createCollection("order_data", {
 ```
 
 This validator ensures that the required fields are present and have the correct data types.
+
+## Sub-Task 2: Model Creation
+
+The features and target variable for any model depends on the KPI (key performance indicators) most significant to our business objective. For example future orders can be predicted to get expected:
+
+- Total revenue
+- Number of orders
+- Sales per product
+- Orders per customer
+- Delivery times
+
+*<u>**Note:**</u> I assume that knowing the expected orders from each customer is more important for us right now. We can use this to <u>plan operational resources</u>, <u>do personalized marketing</u>, and <u>optimize delivery schedules</u>*
+  
+### Target Variable:
+`future_order`: This would be a numerical variable representing the number of future orders from each customer in a time frame.
+
