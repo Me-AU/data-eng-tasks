@@ -212,7 +212,7 @@ After analyzing the dataset, I see that:
 
 ## Sub-Task 3: Data Updation
 
-Updating `shipment_date` for a specified order id is straight forward. Find the document then update the `shipment_date` attribute. Sample query is given below, which you can run in mongosh when using `customers` database
+Updating `shipment_date` for a specified order id is straight forward. Find the document then update the `shipment_date` attribute. Sample query is given below, which you can run in mongosh when using `customers` database:
 
 ```js
 db.order_data.updateOne(
@@ -235,3 +235,23 @@ db.order_data.findOne(
 ```
 
 ![Updation Confirm](u-confirm.png)
+
+## Sub-Task 4: Data Addition
+
+Adding a new order is also a straight forward query, and can easily be done by the insertOne function:
+
+```js
+db.order_data.insertOne({
+   customer_id: 'CUST123',
+   customer_name: 'John Doe',
+   order_id: 2001,
+   order_date: '2024-01-20',
+   shipment_date: '2024-01-25',
+   product_id: 'PROD456',
+   product_description: 'Sample Product',
+   quantity: 3,
+   unit_price: 25.99
+});
+```
+
+
