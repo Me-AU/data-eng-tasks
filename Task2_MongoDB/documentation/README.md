@@ -224,4 +224,14 @@ db.order_data.updateOne(
    }
 )
 ```
+![Update Query](update-query.png)
 
+Confirm result by:
+
+```js
+db.order_data.findOne(
+   { order_id: 1065}
+)
+```
+
+![Updation Confirm](u-confirm.png)
