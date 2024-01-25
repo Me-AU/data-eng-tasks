@@ -30,7 +30,7 @@ Task3_Feature_Engineering/
 
 ### Create a Virtual Environment:
 
-Open a terminal and navigate to the Task3 directory. Then, run the following command:
+Open a terminal and navigate to the root repo directory. Then, run the following command:
 
 ```shell
 python -m venv venv
@@ -59,5 +59,5 @@ This will install the Pandas library for data manipulation, Matplotlib and Seabo
 Save this to make it easy for others to run this project without dependency issues:
 
 ```shell
-pip3 freeze > requirements.txt
+pip3 freeze > Task3_Feature_Engineering\requirements.txt
 ```
