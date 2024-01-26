@@ -23,6 +23,13 @@ Task1_SQL/
 - **README.md File:** File to document all steps taken to complete Task1.
 - **SETUP.md File:** File to document setup instructions for testers/contributors to Task1.
 
+## Choice of RDBMS:
+PostgreSQL is being used because of the following reasons:
+-	Query performance optimization features (helps in Task 1.1)
+-	Maintainability, since it has a robust community of developers and contributors (low risk of the need to shift to a different RDBMS, which is a costly procedure)
+-	Scalability features (helps us as the e-commerce customer base expands with time)
+
+
 ## Import Customer Dataset to PostgreSQL
 
 - Open pgAdmin, connect to your PostgreSQL server, and create a database ```customers```.
